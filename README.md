@@ -17,7 +17,7 @@ This project is a comprehensive landing page designed to showcase solar energy b
 - **Case Studies**: Real-world results and success stories.
 - **CTA**: Direct paths to conversion and inquiries.
 
-<img width="1511" height="859" alt="image" src="https://github.com/user-attachments/assets/160fa268-f397-47dc-a301-8a8d07df2cf9" />
+<img width="1510" height="859" alt="image" src="https://github.com/user-attachments/assets/9cf5652a-5b27-43f1-bc88-0ab86da26c83" />
 <img width="1511" height="862" alt="image" src="https://github.com/user-attachments/assets/84ccbda5-d222-42f6-8485-0b32c8413c2b" />
 <img width="1509" height="860" alt="image" src="https://github.com/user-attachments/assets/dd144f77-796a-4d6c-9acb-2e7423489b34" />
 <img width="1511" height="860" alt="image" src="https://github.com/user-attachments/assets/effea561-0fbc-4d12-84e8-fcad0f51f16b" />
@@ -28,6 +28,9 @@ This project is a comprehensive landing page designed to showcase solar energy b
 <img width="1511" height="860" alt="image" src="https://github.com/user-attachments/assets/245d187b-acd4-4ca2-a2a9-4a2b86eee025" />
 <img width="1511" height="861" alt="image" src="https://github.com/user-attachments/assets/aca14ae0-d8b1-477f-bc55-1f14b9e8b49c" />
 <img width="1511" height="859" alt="image" src="https://github.com/user-attachments/assets/92d2b59f-574f-4ff9-b186-90e4ed8738a2" />
+
+**UA VERSION**
+<img width="1510" height="859" alt="image" src="https://github.com/user-attachments/assets/556ca7c3-1664-4edc-835a-aac1fc1b61f9" />
 
 
 ## 🛠 Tech Stack
