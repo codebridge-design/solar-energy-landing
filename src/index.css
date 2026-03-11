@@ -1,0 +1,83 @@
+/* —— Design Tokens ——————————————————————————————— */
+:root {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  --font-size: 16px;
+
+  --background: #fff;
+  --foreground: #1a1a1a;
+
+  --card: #fff;
+  --card-foreground: #1a1a1a;
+
+  --primary: #16a34a;
+  --primary-foreground: #fff;
+
+  --secondary: #f0fdf4;
+  --secondary-foreground: #166534;
+
+  --muted: #f7f7f7;
+  --muted-foreground: #6b7280;
+
+  --accent: #dcfce7;
+  --accent-foreground: #166534;
+
+  --destructive: #d4183d;
+  --destructive-foreground: #fff;
+
+  --border: #0000001a;
+  --input: transparent;
+  --input-background: #f9fafb;
+
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+}
+
+/* —— Reset ——————————————————————————————————————— */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border: 0 solid;
+  margin: 0;
+  padding: 0;
+}
+
+/* —— Base ———————————————————————————————————————— */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size);
+  line-height: 1.5;
+  color: var(--foreground);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}

@@ -1,0 +1,143 @@
+.section {
+  width: 100%;
+  padding: 96px 24px 112px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 680px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  line-height: 1.65;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.colTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.75rem;
+}
+
+/* Progress bars */
+.barList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.barItem {}
+
+.barMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.barLabel {
+  font-size: 0.9375rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.barValue {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.barTrack {
+  height: 8px;
+  background: var(--muted);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  width: 0;
+}
+
+/* Spec table */
+.specList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.specItem:last-child {
+  border-bottom: none;
+}
+
+.specItem:nth-child(even) {
+  background: var(--muted);
+}
+
+.specLabel {
+  color: var(--muted-foreground);
+}
+
+.specValue {
+  font-weight: 600;
+  text-align: right;
+}
+
+.certBadge {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: 8px;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .columns { grid-template-columns: 1fr; }
+}
