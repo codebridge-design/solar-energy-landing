@@ -3,12 +3,14 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, Phone } from 'lucide-react'
 import Button from '../Button/Button.jsx'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import styles from './CTASection.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function CTASection() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -31,27 +33,20 @@ export default function CTASection() {
   return (
     <section id="cta" ref={sectionRef} className={styles.section}>
       <div className={`cta-inner ${styles.inner}`}>
-        <p className={styles.eyebrow}>Ready to Start?</p>
-        <h2 className={styles.title}>
-          Turn your rooftop into a revenue stream
-        </h2>
-        <p className={styles.subtitle}>
-          Get a free feasibility study and financial model for your site.
-          Our engineers will assess your energy profile within 48 hours.
-        </p>
+        <p className={styles.eyebrow}>{t.cta.eyebrow}</p>
+        <h2 className={styles.title}>{t.cta.title}</h2>
+        <p className={styles.subtitle}>{t.cta.subtitle}</p>
         <div className={styles.actions}>
           <Button size="lg">
-            Request Free Assessment
+            {t.cta.btnPrimary}
             <ArrowRight size={18} />
           </Button>
           <Button size="lg" variant="outline">
             <Phone size={18} />
-            Schedule a Call
+            {t.cta.btnSecondary}
           </Button>
         </div>
-        <p className={styles.note}>
-          No commitment. Results in 48 hours. Available across Ukraine & EU.
-        </p>
+        <p className={styles.note}>{t.cta.note}</p>
       </div>
     </section>
   )

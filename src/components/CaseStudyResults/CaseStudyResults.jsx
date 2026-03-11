@@ -2,43 +2,21 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Zap, DollarSign, Leaf, Building2 } from 'lucide-react'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import styles from './CaseStudyResults.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const RESULTS = [
-  {
-    icon: Zap,
-    value: 2.4,
-    suffix: ' MW',
-    label: 'Installed Capacity',
-    detail: 'The largest commercial solar installation in the Kyiv region as of 2024.',
-  },
-  {
-    icon: DollarSign,
-    value: 1.2,
-    suffix: 'M €',
-    label: 'Annual Savings',
-    detail: 'Net savings in Year 1, after accounting for O&M, insurance, and financing costs.',
-  },
-  {
-    icon: Leaf,
-    value: 847,
-    suffix: 't',
-    label: 'CO₂ Avoided / Year',
-    detail: 'Equivalent to removing 184 diesel cars from the road permanently.',
-  },
-  {
-    icon: Building2,
-    value: 312,
-    suffix: '',
-    label: 'Buildings Powered',
-    detail: 'Offices, retail, and logistics units across the entire Sunridge commercial district.',
-  },
+const RESULT_DATA = [
+  { icon: Zap,        value: 2.4, suffix: ' MW' },
+  { icon: DollarSign, value: 1.2, suffix: 'M €' },
+  { icon: Leaf,       value: 847, suffix: 't'   },
+  { icon: Building2,  value: 312, suffix: ''    },
 ]
 
 export default function CaseStudyResults() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -94,30 +72,31 @@ export default function CaseStudyResults() {
     <section id="results" ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
         <div className={`results-header ${styles.header}`}>
-          <p className={styles.eyebrow}>Measured Outcomes</p>
-          <h2 className={styles.title}>Year 1 Results</h2>
-          <p className={styles.subtitle}>
-            Independently verified performance data from the first 12 months of operation.
-          </p>
+          <p className={styles.eyebrow}>{t.results.eyebrow}</p>
+          <h2 className={styles.title}>{t.results.title}</h2>
+          <p className={styles.subtitle}>{t.results.subtitle}</p>
         </div>
 
         <ul className={`results-grid ${styles.grid}`}>
-          {RESULTS.map(({ icon: Icon, value, suffix, label, detail }) => (
-            <li key={label} className={`result-card ${styles.card}`}>
-              <div className={styles.iconWrapper}>
-                <Icon size={28} />
-              </div>
-              <div
-                className={styles.counter}
-                data-result-val={value}
-                data-result-suffix={suffix}
-              >
-                0{suffix}
-              </div>
-              <p className={styles.cardLabel}>{label}</p>
-              <p className={styles.cardDetail}>{detail}</p>
-            </li>
-          ))}
+          {RESULT_DATA.map(({ icon: Icon, value, suffix }, i) => {
+            const { label, detail } = t.results.cards[i]
+            return (
+              <li key={i} className={`result-card ${styles.card}`}>
+                <div className={styles.iconWrapper}>
+                  <Icon size={28} />
+                </div>
+                <div
+                  className={styles.counter}
+                  data-result-val={value}
+                  data-result-suffix={suffix}
+                >
+                  0{suffix}
+                </div>
+                <p className={styles.cardLabel}>{label}</p>
+                <p className={styles.cardDetail}>{detail}</p>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

@@ -3,36 +3,20 @@ import { Autoplay, Pagination } from 'swiper/modules'
 import { Star } from 'lucide-react'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import styles from './TestimonialsSection.module.css'
 
-const TESTIMONIALS = [
-  {
-    name: 'Olena Kovalenko',
-    role: 'Facility Manager, Sunridge Complex',
-    stars: 5,
-    text: 'The installation team were exceptional — zero disruption to tenants during a 4-week install. We were live and exporting to the grid 2 days ahead of schedule.',
-  },
-  {
-    name: 'Dmytro Petrenko',
-    role: 'CFO, Sunridge Holdings',
-    stars: 5,
-    text: 'The financial model was exactly as projected. In Month 1 we saved €98,000 compared to the same period last year. The payback calculation we agreed on at signature is tracking perfectly.',
-  },
-  {
-    name: 'Iryna Savchenko',
-    role: 'Head of Sustainability, Sunridge Group',
-    stars: 5,
-    text: "We've gone from being a major carbon emitter to a net-positive energy producer. Our ESG report this year will show an 847-tonne CO₂ reduction — a milestone I didn't think we'd reach until 2027.",
-  },
-]
+const STARS = 5
 
 export default function TestimonialsSection() {
+  const { t } = useLanguage()
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <p className={styles.eyebrow}>Client Voices</p>
-          <h2 className={styles.title}>What the Client Said</h2>
+          <p className={styles.eyebrow}>{t.testimonials.eyebrow}</p>
+          <h2 className={styles.title}>{t.testimonials.title}</h2>
         </div>
 
         <Swiper
@@ -48,16 +32,16 @@ export default function TestimonialsSection() {
           }}
           className={styles.slider}
         >
-          {TESTIMONIALS.map(({ name, role, stars, text }) => (
-            <SwiperSlide key={name}>
+          {t.testimonials.items.map(({ name, role, text }, i) => (
+            <SwiperSlide key={i}>
               <div className={styles.card}>
                 <div className={styles.rating}>
-                  {Array.from({ length: 5 }).map((_, i) => (
+                  {Array.from({ length: 5 }).map((_, j) => (
                     <Star
-                      key={i}
+                      key={j}
                       size={20}
-                      className={i < stars ? styles.star : styles.starMuted}
-                      fill={i < stars ? 'currentColor' : 'none'}
+                      className={j < STARS ? styles.star : styles.starMuted}
+                      fill={j < STARS ? 'currentColor' : 'none'}
                     />
                   ))}
                 </div>

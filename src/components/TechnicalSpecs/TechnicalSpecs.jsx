@@ -1,30 +1,32 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import styles from './TechnicalSpecs.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const SPECS = [
-  { label: 'Panel Efficiency', value: 22.8, max: 30, unit: '%', color: 'var(--primary)' },
-  { label: 'Inverter Efficiency', value: 98.6, max: 100, unit: '%', color: '#0ea5e9' },
-  { label: 'System Availability', value: 99.2, max: 100, unit: '%', color: '#8b5cf6' },
-  { label: 'Annual Yield', value: 3200, max: 4000, unit: ' kWh/kWp', color: '#f59e0b' },
-  { label: 'CO₂ Offset vs. Grid', value: 847, max: 1200, unit: ' tons/yr', color: '#10b981' },
-  { label: 'Self-Consumption Rate', value: 94, max: 100, unit: '%', color: 'var(--primary)' },
+  { value: 22.8, max: 30,   unit: '%',       color: 'var(--primary)' },
+  { value: 98.6, max: 100,  unit: '%',       color: '#0ea5e9' },
+  { value: 99.2, max: 100,  unit: '%',       color: '#8b5cf6' },
+  { value: 3200, max: 4000, unit: ' kWh/kWp', color: '#f59e0b' },
+  { value: 847,  max: 1200, unit: ' tons/yr', color: '#10b981' },
+  { value: 94,   max: 100,  unit: '%',       color: 'var(--primary)' },
 ]
 
-const PANELS = [
-  { label: 'Total panels installed', value: '2,400 units' },
-  { label: 'Panel model', value: 'SunPower SPR-M440' },
-  { label: 'Inverter model', value: 'SMA Sunny Tripower 25000TL' },
-  { label: 'Battery storage', value: '480 kWh (LFP)' },
-  { label: 'Monitoring system', value: 'SolarEdge Energy Hub' },
-  { label: 'Warranty', value: '25 years performance' },
+const PANEL_VALUES = [
+  '2,400 units',
+  'SunPower SPR-M440',
+  'SMA Sunny Tripower 25000TL',
+  '480 kWh (LFP)',
+  'SolarEdge Energy Hub',
+  '25 years performance',
 ]
 
 export default function TechnicalSpecs() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -98,24 +100,22 @@ export default function TechnicalSpecs() {
     <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
         <div className={`specs-header ${styles.header}`}>
-          <p className={styles.eyebrow}>Technical Data</p>
-          <h2 className={styles.title}>System Specifications</h2>
-          <p className={styles.subtitle}>
-            Performance metrics and hardware specifications for the 2.4 MW Sunridge installation.
-          </p>
+          <p className={styles.eyebrow}>{t.specs.eyebrow}</p>
+          <h2 className={styles.title}>{t.specs.title}</h2>
+          <p className={styles.subtitle}>{t.specs.subtitle}</p>
         </div>
 
         <div className={`specs-columns ${styles.columns}`}>
           {/* Performance bars */}
           <div className={`specs-col ${styles.barsCol}`}>
-            <h3 className={styles.colTitle}>Performance Metrics</h3>
+            <h3 className={styles.colTitle}>{t.specs.colPerformance}</h3>
             <ul className={styles.barList}>
-              {SPECS.map(({ label, value, max, unit, color }) => {
+              {SPECS.map(({ value, max, unit, color }, i) => {
                 const pct = Math.round((value / max) * 100)
                 return (
-                  <li key={label} className={styles.barItem}>
+                  <li key={i} className={styles.barItem}>
                     <div className={styles.barMeta}>
-                      <span className={styles.barLabel}>{label}</span>
+                      <span className={styles.barLabel}>{t.specs.specLabels[i]}</span>
                       <span
                         className={styles.barValue}
                         data-spec-val={value}
@@ -140,18 +140,16 @@ export default function TechnicalSpecs() {
 
           {/* Panel specs table */}
           <div className={`specs-col ${styles.tableCol}`}>
-            <h3 className={styles.colTitle}>System Components</h3>
+            <h3 className={styles.colTitle}>{t.specs.colComponents}</h3>
             <ul className={styles.specList}>
-              {PANELS.map(({ label, value }) => (
-                <li key={label} className={styles.specItem}>
-                  <span className={styles.specLabel}>{label}</span>
+              {PANEL_VALUES.map((value, i) => (
+                <li key={i} className={styles.specItem}>
+                  <span className={styles.specLabel}>{t.specs.panelLabels[i]}</span>
                   <span className={styles.specValue}>{value}</span>
                 </li>
               ))}
             </ul>
-            <div className={styles.certBadge}>
-              IEC 61215 · IEC 61730 · MCS Certified · ISO 9001
-            </div>
+            <div className={styles.certBadge}>{t.specs.certBadge}</div>
           </div>
         </div>
       </div>

@@ -2,42 +2,20 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TrendingUp, Zap, AlertTriangle } from 'lucide-react'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import styles from './ProblemStats.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const STATS = [
-  {
-    icon: AlertTriangle,
-    value: 68,
-    suffix: '%',
-    label: 'of commercial energy costs were avoidable',
-    description:
-      'Before solar, the Sunridge complex spent €1.74M annually on grid electricity — most of it during peak pricing hours.',
-    color: 'var(--destructive)',
-  },
-  {
-    icon: Zap,
-    value: 1200,
-    suffix: 't',
-    label: 'CO₂ emitted per year',
-    description:
-      'The district\'s carbon footprint from energy consumption exceeded 1,200 tons annually — well above the national average.',
-    color: '#f59e0b',
-  },
-  {
-    icon: TrendingUp,
-    value: 34,
-    suffix: '%',
-    label: 'energy price increase over 3 years',
-    description:
-      'Rising utility costs made the economic case for solar undeniable. The decision to act in 2023 locked in savings for decades.',
-    color: 'var(--primary)',
-  },
+const STAT_DATA = [
+  { icon: AlertTriangle, value: 68,   suffix: '%', color: 'var(--destructive)' },
+  { icon: Zap,           value: 1200, suffix: 't', color: '#f59e0b' },
+  { icon: TrendingUp,    value: 34,   suffix: '%', color: 'var(--primary)' },
 ]
 
 export default function ProblemStats() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -97,33 +75,32 @@ export default function ProblemStats() {
     <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
         <div className={`problem-header ${styles.header}`}>
-          <p className={styles.eyebrow}>The Challenge</p>
-          <h2 className={styles.title}>
-            Why the Sunridge district needed to act
-          </h2>
-          <p className={styles.subtitle}>
-            Three hard numbers that made solar the only rational choice.
-          </p>
+          <p className={styles.eyebrow}>{t.problem.eyebrow}</p>
+          <h2 className={styles.title}>{t.problem.title}</h2>
+          <p className={styles.subtitle}>{t.problem.subtitle}</p>
         </div>
 
         <ul className={`problem-cards ${styles.grid}`}>
-          {STATS.map(({ icon: Icon, value, suffix, label, description, color }) => (
-            <li key={label} className={`problem-card ${styles.card}`}>
-              <div className={styles.iconWrapper} style={{ '--icon-color': color }}>
-                <Icon size={28} />
-              </div>
-              <div
-                className={styles.counter}
-                data-counter={value}
-                data-suffix={suffix}
-                style={{ color }}
-              >
-                0{suffix}
-              </div>
-              <p className={styles.cardLabel}>{label}</p>
-              <p className={styles.cardDesc}>{description}</p>
-            </li>
-          ))}
+          {STAT_DATA.map(({ icon: Icon, value, suffix, color }, i) => {
+            const { label, description } = t.problem.stats[i]
+            return (
+              <li key={i} className={`problem-card ${styles.card}`}>
+                <div className={styles.iconWrapper} style={{ '--icon-color': color }}>
+                  <Icon size={28} />
+                </div>
+                <div
+                  className={styles.counter}
+                  data-counter={value}
+                  data-suffix={suffix}
+                  style={{ color }}
+                >
+                  0{suffix}
+                </div>
+                <p className={styles.cardLabel}>{label}</p>
+                <p className={styles.cardDesc}>{description}</p>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

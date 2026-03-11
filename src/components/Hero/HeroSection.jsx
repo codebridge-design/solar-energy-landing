@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowDown, Sun } from 'lucide-react'
 import Button from '../Button/Button.jsx'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import styles from './HeroSection.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -11,6 +12,7 @@ export default function HeroSection() {
   const sectionRef = useRef(null)
   const bgRef = useRef(null)
   const contentRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -49,19 +51,17 @@ export default function HeroSection() {
       <div ref={contentRef} className={styles.content}>
         <div data-anim className={styles.badge}>
           <Sun size={16} />
-          Case Study — Kyiv Region, 2024
+          {t.hero.badge}
         </div>
         <h1 data-anim className={styles.title}>
-          Sunridge Commercial<br />Solar Park
+          {t.hero.titleLine1}<br />{t.hero.titleLine2}
         </h1>
         <p data-anim className={styles.subtitle}>
-          How a 2.4 MW solar installation transformed energy costs
-          for an entire commercial district — delivering €1.2M in annual
-          savings and eliminating 847 tons of CO₂ per year.
+          {t.hero.subtitle}
         </p>
         <div data-anim className={styles.actions}>
           <Button size="lg" onClick={() => document.querySelector('#results')?.scrollIntoView({ behavior: 'smooth' })}>
-            View Results
+            {t.hero.btnPrimary}
           </Button>
           <Button
             size="lg"
@@ -69,7 +69,7 @@ export default function HeroSection() {
             style={{ background: 'rgba(255,255,255,0.12)', color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}
             onClick={() => document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Get a Quote
+            {t.hero.btnSecondary}
           </Button>
         </div>
         <div data-anim className={styles.scroll} aria-hidden="true">
