@@ -1,16 +1,79 @@
-# React + Vite
+# Solar Energy Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-conversion landing page for solar energy solutions. Built with React, Vite, and GSAP for smooth animations and performance.
 
-Currently, two official plugins are available:
+## 🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a comprehensive landing page designed to showcase solar energy benefits, technical specifications, and return on investment (ROI) for potential customers. It features a responsive design, interactive components, and professional styling.
 
-## React Compiler
+### Key Sections
+- **Hero Section**: Engaging introduction with high-impact visuals.
+- **Problem & Stats**: Data-driven evidence of why solar energy is needed.
+- **Benefits**: Clear breakdown of solar energy advantages.
+- **ROI & Savings**: Interactive-style ROI calculation/display.
+- **Technical Specs**: Detailed information on hardware and technology.
+- **How It Works**: Step-by-step process of installation and operation.
+- **Testimonials**: Social proof from satisfied customers.
+- **Case Studies**: Real-world results and success stories.
+- **CTA**: Direct paths to conversion and inquiries.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: React 19
+- **Build Tool**: Vite 7
+- **Styling**: CSS Modules
+- **Animations**: GSAP (GreenSock Animation Platform)
+- **Icons**: Lucide React
+- **Carousel**: Swiper
+- **Linting**: ESLint
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (version 18.x or higher recommended)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
+
+## 🔧 Installation & Setup
+
+1. **Clone the repository** (if applicable):
+   ```bash
+   git clone <repository-url>
+   cd solar-energy-landing
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`.
+
+## 📖 Available Scripts
+
+- `npm run dev`: Starts the Vite development server with Hot Module Replacement (HMR).
+- `npm run build`: Compiles the project into highly optimized static assets in the `dist/` directory.
+- `npm run preview`: Locally previews the production build.
+- `npm run lint`: Runs ESLint to check for code quality and style issues.
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/             # Static assets (images, icons, etc.)
+├── components/         # Reusable UI components
+│   ├── Benefits/       # Benefits section components
+│   ├── Hero/           # Hero section components
+│   ├── ROI/            # ROI & Savings components
+│   └── ...             # Other section-specific components
+├── App.jsx             # Main application component
+├── main.jsx            # Entry point
+└── index.css           # Global styles and variables
+```
+
+## 📄 License
+
+This project is private and for internal use only.
